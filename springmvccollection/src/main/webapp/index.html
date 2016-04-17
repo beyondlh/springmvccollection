@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SpringMVC 接收数组对象测试</title>
+    <script src="./jslib/jquery.js"></script>
+    <script src="./jslib/json2.js"></script>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    (function () {
+        var userList =[];
+        userList.push({name: "李刚", gender: "男"});
+        userList.push({name: "李刚", gender: "男"});
+
+        $.ajax({
+//            type: "get",
+            type: "post",
+            url: "./rest/User",
+            data: JSON.stringify(userList),
+            dataType: "json",
+            contentType: "application/json",
+            success: function (data) {
+                console.log(data);
+            },
+            error: function (res) {
+                console.log(res);
+            }
+        });
+    })();
+
+</script>
