@@ -17,7 +17,15 @@
         <load-on-startup>1</load-on-startup>
     </servlet>
     <servlet-mapping>
+        <!--
+        <url-pattern>/</url-pattern>  不会匹配到*.jsp，不会进入spring的DispatcherServlet类
+        <url-pattern>/*</url-pattern> 会匹配*.jsp，导致进入spring的DispatcherServlet类，然后去寻找controller，接着找不到对应的controller所以报错。
+        <url-pattern>/</url-pattern>  会匹配到/login这样的路径型url，不会匹配到模式为*.jsp这样的后缀型url
+        <url-pattern>/*</url-pattern> 会匹配所有url：路径型的和后缀型的url(包括/login,*.jsp,*.js和*.html等)
+                此处有疑惑，需弄明白
+        -->
         <servlet-name>dispatcher</servlet-name>
+        <!--<url-pattern>/*</url-pattern>-->
         <url-pattern>/</url-pattern>
     </servlet-mapping>
     <welcome-file-list>
