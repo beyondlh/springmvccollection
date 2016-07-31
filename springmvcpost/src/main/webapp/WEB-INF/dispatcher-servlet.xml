@@ -11,13 +11,16 @@
 		     http://www.springframework.org/schema/context/spring-context.xsd
 		     http://www.springframework.org/schema/mvc
             http://www.springframework.org/schema/mvc/spring-mvc.xsd">
-    <mvc:annotation-driven/>
+    <!-- 支持mvc注解驱动 -->
+    <mvc:annotation-driven />
     <annotation-driven/>
     <mvc:resources mapping="/jslib/**" location="/jslib/"></mvc:resources>
     <!--自动扫描的包名-->
-    <context:component-scan base-package="com.lh"/>
+    <context:component-scan base-package="com.hdsx.lh"/>
     <mvc:default-servlet-handler/>
     <!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
+
+    <!-- 视图解析器 -->
     <beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <beans:property name="prefix" value="/WEB-INF/views/"/>
         <beans:property name="suffix" value=".jsp"/>
@@ -26,15 +29,12 @@
     <!--
         <beans:bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
         </beans:bean>-->
-
+<!--
     <beans:bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
         <beans:property name="messageConverters">
             <beans:list>
                 <beans:bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"/>
             </beans:list>
         </beans:property>
-    </beans:bean>
-
-    <beans:beans>
-    </beans:beans>
+    </beans:bean>-->
 </beans:beans>
