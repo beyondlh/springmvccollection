@@ -26,6 +26,9 @@
         <beans:property name="suffix" value=".jsp"/>
     </beans:bean>
 
+    <beans:bean name="/foo" class="com.hdsx.lh.controllers.FooController"></beans:bean>
+
+
     <!--
         <beans:bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
         </beans:bean>-->
