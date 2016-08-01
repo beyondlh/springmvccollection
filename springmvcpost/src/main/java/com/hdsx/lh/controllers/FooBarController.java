@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-@RequestMapping
+@RequestMapping("/foobar")
 public class FooBarController {
 	@RequestMapping("/action1")
 	public String action1(Model model) {
@@ -20,7 +20,7 @@ public class FooBarController {
 	@RequestMapping
 	public String action2(Model model) {
 		// 在模型中添加属性message值为action2，渲染页面时使用
-		model.addAttribute("message", "action2");
+		model.addAttribute("message", "action2 default");
 		return "foo/index";
 	}
 
@@ -33,6 +33,7 @@ public class FooBarController {
 	// 正则
 	@RequestMapping(value = "/action4/{id:\\d{6}}-{name:[a-z]{3}}")
 	public String action4(@PathVariable int id, @PathVariable String name, Model model) {
+//		action4/123456-nma
 		model.addAttribute("message", "id:" + id + " name:" + name);
 		return "foo/index";
 	}
