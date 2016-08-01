@@ -11,9 +11,13 @@
 		     http://www.springframework.org/schema/context/spring-context.xsd
 		     http://www.springframework.org/schema/mvc
             http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+    <!--
+    默认是不允许使用矩阵变量的，需要设置配置文中的RequestMappingHandlerMapping的属性removeSemicolonContent为false；
+    在annotation-driven中增加属性enable-matrix-variables="true"，修改后的springmvc-servlet.xml文件如下：
+    -->
     <!-- 支持mvc注解驱动 -->
-    <mvc:annotation-driven />
-    <annotation-driven/>
+    <mvc:annotation-driven enable-matrix-variables="true" />
     <mvc:resources mapping="/jslib/**" location="/jslib/"></mvc:resources>
     <!--自动扫描的包名-->
     <context:component-scan base-package="com.hdsx.lh"/>
@@ -28,7 +32,10 @@
 
     <beans:bean name="/foo" class="com.hdsx.lh.controllers.FooController"></beans:bean>
 
-
+    <!-- 配置映射媒体类型的策略 -->
+<!--    <beans:bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping">
+        <beans:property  name="removeSemicolonContent" value="false"></beans:property>
+    </beans:bean>-->
     <!--
         <beans:bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
         </beans:bean>-->
