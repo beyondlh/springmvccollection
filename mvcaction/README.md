@@ -1,5 +1,6 @@
 Spring MVC 练习
 =============
+http://www.cnblogs.com/best/p/5669010.html
 如果在请求处理方法中需要访问HttpSession对象，则可以添加HttpSession作为参数，Spring会将对象正确的传递给方法，如:public  String action(HttpSession session)；若需要访问客户端语言环境和HttpServletRequest对象，则可以在方法签名上包含这样的参数，如：public String action(HttpServletRequest request,Locale locale)。可以在请求中出现的参数类型有：
 
 org.springframework.web.context.request.WebRequest
