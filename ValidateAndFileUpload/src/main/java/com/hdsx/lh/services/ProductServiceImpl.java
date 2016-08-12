@@ -1,9 +1,10 @@
 package com.hdsx.lh.services;
 
+import com.hdsx.lh.entities.Product;
+import org.springframework.stereotype.Service;
+
 import java.util.ArrayList;
 import java.util.List;
-import org.springframework.stereotype.Service;
-import com.hdsx.lh.entities.Product;
 
 @Service
 public class ProductServiceImpl implements ProductService {
@@ -22,7 +23,6 @@ public class ProductServiceImpl implements ProductService {
 	/*
 	 * 获得所有的产品
 	 */
-	@Override
 	public List<Product> getAllProducts() {
 		return products;
 	}
@@ -30,7 +30,6 @@ public class ProductServiceImpl implements ProductService {
 	/*
 	 * 获得产品通过编号
 	 */
-	@Override
 	public Product getProductById(int id) {
 		for (Product product : products) {
 			if (product.getId() == id) {
@@ -43,7 +42,6 @@ public class ProductServiceImpl implements ProductService {
 	/*
 	 * 获得产品名称通过名称
 	 */
-	@Override
 	public List<Product> getProductsByName(String productName) {
 		if(productName==null||productName.equals("")){
 			return getAllProducts();
@@ -61,7 +59,6 @@ public class ProductServiceImpl implements ProductService {
 	 * 新增
 	 * @throws Exception 
 	 */
-	@Override
 	public void addProduct(Product entity){
 		if (products.size() > 0) {
 			entity.setId(products.get(products.size() - 1).getId() + 1);
@@ -85,7 +82,6 @@ public class ProductServiceImpl implements ProductService {
 	/**
 	 * 删除
 	 */
-	@Override
 	public void deleteProduct(int id){
 		products.remove(getProductById(id));
 	}
@@ -93,7 +89,6 @@ public class ProductServiceImpl implements ProductService {
 	/*
 	 * 多删除
 	 */
-	@Override
 	public void deletesProduct(int[] ids){
 		for (int id : ids) {
 			deleteProduct(id);

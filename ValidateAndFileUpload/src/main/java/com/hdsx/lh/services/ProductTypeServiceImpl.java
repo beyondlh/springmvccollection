@@ -20,7 +20,6 @@ public class ProductTypeServiceImpl implements ProductTypeService {
 		productTypes.add(new ProductType(51, "生鲜水果"));
 	}
 
-	@Override
 	public ProductType getProductTypeById(int id) {
 		for (ProductType productType : productTypes) {
 			if (productType.getId() == id) {
@@ -30,7 +29,6 @@ public class ProductTypeServiceImpl implements ProductTypeService {
 		return null;
 	}
 
-	@Override
 	public List<ProductType> getAllProductTypes() {
 		return productTypes;
 	}

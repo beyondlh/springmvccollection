@@ -11,13 +11,13 @@ import org.springframework.validation.Validator;
 public class ProductValidator implements Validator {
 
 	//当前验证器可以验证的类型
-	@Override
+//	@Override
 	public boolean supports(Class<?> clazz) {
 		return Product.class.isAssignableFrom(clazz);
 	}
 
 	//执行校验
-	@Override
+//	@Override
 	public void validate(Object target, Errors errors) {
 		//将要验证的对象转换成Product类型
 		Product entity=(Product)target;
