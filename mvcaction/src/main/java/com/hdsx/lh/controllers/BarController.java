@@ -143,8 +143,8 @@ public class BarController {
 	@ResponseBody
 	public String action41(HttpServletResponse response)
 	{
-		response.setHeader("Content-type","application/octet-stream");         
-		response.setHeader("Content-Disposition","attachment; filename=table.xls"); //指定文件名
+		response.setContentType("application/vnd.ms-excel");
+		response.setHeader("Content-Disposition","attachment; filename=mytest.xls"); //指定文件名
 		return "<table><tr><td>Hello</td><td>Excel</td></tr></table>";
 	}
 	
