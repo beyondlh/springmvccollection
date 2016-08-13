@@ -23,11 +23,21 @@ public class UpFileController {
 		
 		//文件存放的位置
 		String path=request.getServletContext().getRealPath("/files");
+
 		for (MultipartFile file : files) {
 			System.out.println(file.getOriginalFilename());
 			System.out.println(file.getSize());
 			System.out.println("--------------------------");
+
 			File tempFile=new File(path, file.getOriginalFilename());
+			if(!tempFile.exists()){
+				/*mkdirs()可以建立多级文件夹， mkdir()只会建立一级的文件夹， 如下：
+				new File("/tmp/one/two/three").mkdirs();
+				执行后， 会建立tmp/one/two/three四级目录
+				new File("/tmp/one/two/three").mkdir();
+				则不会建立任何目录， 因为找不到/tmp/one/two目录， 结果返回false*/
+				tempFile.getParentFile().mkdir();
+			}
 			file.transferTo(tempFile);
 		}
 		
