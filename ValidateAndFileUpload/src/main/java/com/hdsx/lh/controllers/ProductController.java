@@ -1,7 +1,9 @@
 package com.hdsx.lh.controllers;
 
-import javax.validation.Valid;
-
+import com.hdsx.lh.entities.Product;
+import com.hdsx.lh.entities.ProductValidator;
+import com.hdsx.lh.services.ProductService;
+import com.hdsx.lh.services.ProductTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,10 +12,6 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import com.hdsx.lh.entities.Product;
-import com.hdsx.lh.entities.ProductValidator;
-import com.hdsx.lh.services.ProductService;
-import com.hdsx.lh.services.ProductTypeService;
 
 @Controller
 @RequestMapping
@@ -58,7 +56,6 @@ public class ProductController {
 	// 新增保存，如果新增成功转回列表页，如果失败回新增页，保持页面数据
 	@RequestMapping("/addSave")
 	public String addSave(Model model, Product product, BindingResult bindingResult) {
-
 		// 创建一个产品验证器
 		ProductValidator validator = new ProductValidator();
 		// 执行验证，将验证的结果给bindingResult，该类型继承Errors
