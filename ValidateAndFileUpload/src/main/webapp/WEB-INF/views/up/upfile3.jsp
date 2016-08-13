@@ -11,6 +11,7 @@
 <form action="file3Save" method="post"  enctype="multipart/form-data">
   <p>
      <label for="files">文件：</label>
+      <%--multiple="multiple"这个属性是HTML5新增加的属性，一些旧版的浏览器可能不支持，使用JavaScript可以处理一下。--%>
      <input type="file" name="files" id="files" multiple="multiple" />
    </p>
    <p>

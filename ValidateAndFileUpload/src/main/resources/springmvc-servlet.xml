@@ -99,6 +99,9 @@
 	</bean>
 
 	<!--文件上传解析器 -->
+<!--	CommonsMultipartResolver用于通用的文件上传，支持各种版本的Servlet。
+	StandardServletMultipartResolver用于Servlet3.0以上的版本上传文件。-->
+	<!--定义了一个标准的文件上传解析器，更多属性可以查看这个类的源码。这步非常关键，否则上传会失败。另外id不要换成别的名称，更换后可能会上传失败。-->
 	<bean id="multipartResolver"
 		class="org.springframework.web.multipart.support.StandardServletMultipartResolver">
 	</bean>

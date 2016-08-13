@@ -13,6 +13,9 @@
 		<load-on-startup>1</load-on-startup>
 		<!--Servlet3.0以上文件上传配置 -->
 		<multipart-config>
+			<!--<location></location>-->
+			<!--指定上传文件存放的目录。当我们指定了location后，我们在调用Part的write(String fileName)方法把文件写入到硬盘的时候可以，
+			文件名称可以不用带路径，但是如果fileName带了绝对路径，那将以fileName所带路径为准把文件写入磁盘，不建议指定。-->
 			<max-file-size>5242880</max-file-size><!--上传文件的最大限制5MB -->
 			<max-request-size>20971520</max-request-size><!--请求的最大限制20MB -->
 			<file-size-threshold>0</file-size-threshold><!--当文件的大小超过临界值时将写入磁盘 -->
