@@ -18,10 +18,10 @@
 	<mvc:annotation-driven enable-matrix-variables="true" />
 
 	<!-- 配置映射媒体类型的策略 -->
-	<bean
+<!--	<bean
 		class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping">
 		<property name="removeSemicolonContent" value="false" />
-	</bean>
+	</bean>-->
 
 
 	<!-- 内部视图解析器，JSP与JSTL模板 -->

@@ -10,7 +10,7 @@ import java.util.List;
  */
 public class App {
     public static void main(String[] args) {
-        List<User> userList = new ArrayList<>();
+        List<User> userList = new ArrayList<User>();
         for (int i = 0; i < 5; i++) {
             User user = new User();
             user.setGender("nan");

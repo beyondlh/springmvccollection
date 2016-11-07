@@ -65,7 +65,7 @@ public class UpFileController {
 			msg+="<img src='../files/"+file.getOriginalFilename()+"' width='200' />";
 		}
 		model.addAttribute("message", msg);
-		return "up/upfile3";
+		return "up/upfile";
 	}
 
 	

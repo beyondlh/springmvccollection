@@ -25,8 +25,8 @@
                 此处有疑惑，需弄明白
         -->
         <servlet-name>dispatcher</servlet-name>
-        <!--<url-pattern>/*</url-pattern>-->
-        <url-pattern>/</url-pattern>
+        <url-pattern>/*</url-pattern>
+        <!--<url-pattern>/</url-pattern>-->
     </servlet-mapping>
     <welcome-file-list>
         <!--<welcome-file>index.html</welcome-file>-->

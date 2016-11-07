@@ -6,16 +6,13 @@
 </head>
 <body>
 <h2>上传文件</h2>
-<form action="fileSave" method="post"  enctype="multipart/form-data">
+<form action="http://localhost:8036/validate/up/file3Save" method="post"  enctype="multipart/form-data">
   <p>
      <label for="files">文件：</label>
      <input type="file" name="files" id="files" multiple="multiple" />
    </p>
    <p>
    <button>提交</button>
-   </p>
-   <p>
-     ${message}
    </p>
 </form>
 </body>
