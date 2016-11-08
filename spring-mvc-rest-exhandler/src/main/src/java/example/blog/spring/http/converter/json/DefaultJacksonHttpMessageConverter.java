@@ -19,7 +19,7 @@ import java.io.IOException;
 import java.nio.charset.Charset;
 
 /**
- * Replaces Spring's {@link org.springframework.http.converter.json.MappingJacksonHttpMessageConverter}, which is
+ * Replaces Spring's {@link org.springframework.http.converter.json.MappingJackson2HttpMessageConverter}, which is
  * difficult to configure for pretty-printing.  This implementation enables pretty-printing easily via a setter/getter.
  * <p/>
  * See <a href="http://stackoverflow.com/questions/6541757/when-using-spring-mvc-for-rest-how-do-you-enable-jackson-to-pretty-print-render">

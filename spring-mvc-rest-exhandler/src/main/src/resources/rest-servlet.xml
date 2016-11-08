@@ -14,49 +14,51 @@
 
     <mvc:annotation-driven>
         <mvc:message-converters>
-            <bean class="example.blog.spring.http.converter.json.DefaultJacksonHttpMessageConverter">
-                <!-- True only for the blog article - a production system would set this to false to reduce
-                     the number of bytes sent across the wire: -->
-                <property name="prettyPrint" value="true"/>
-            </bean>
+            <ref bean="fastjonsConvertor"></ref>
         </mvc:message-converters>
     </mvc:annotation-driven>
-    <mvc:interceptors>
-        <bean id="localeChangeInterceptor" class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
-            <property name="paramName" value="lang"/>
-        </bean>
-    </mvc:interceptors>
+
+    <!--    <mvc:interceptors>
+            <bean id="localeChangeInterceptor" class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+                <property name="paramName" value="lang"/>
+            </bean>
+            <mvc:interceptor>
+                <mvc:mapping path="/**"/>
+                <bean class="example.blog.spring.mvc.rest.exhandler.MyHandlerInterceptor"></bean>
+            </mvc:interceptor>
+        </mvc:interceptors>-->
+
     <bean id="localeResolver" class="org.springframework.web.servlet.i18n.AcceptHeaderLocaleResolver"/>
 
-    <!-- Unfortunately we have to repeat an instance of this class here because the mvc:message-converters element above
-         does not support <ref/> elements: -->
-    <bean id="jacksonHttpMessageConverter"
-          class="example.blog.spring.http.converter.json.DefaultJacksonHttpMessageConverter">
-        <property name="prettyPrint" value="true"/>
+    <bean id="fastjonsConvertor"
+          class="com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter4">
     </bean>
 
 
-    <bean id="contentNegotiationManager" class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
-        <property name="mediaTypes">
-            <value>
-                html=text/html
-                json=application/json
-                json=application/callback
-                image=image/*
-            </value>
-        </property>
-        <property name="defaultContentType" value="#{T(org.springframework.http.MediaType).APPLICATION_JSON}"/>
-    </bean>
+    <!--
 
-    <bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
-        <property name="order" value="1"/>
-        <property name="contentNegotiationManager" ref="contentNegotiationManager"/>
-        <property name="defaultViews">
-            <list>
-                <bean class="org.springframework.web.servlet.view.json.MappingJackson2JsonView"/>
-            </list>
-        </property>
-    </bean>
+        <bean id="contentNegotiationManager" class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
+            <property name="mediaTypes">
+                <value>
+                    html=text/html
+                    json=application/json
+                    json=application/callback
+                    image=image/*
+                </value>
+            </property>
+            <property name="defaultContentType" value="#{T(org.springframework.http.MediaType).APPLICATION_JSON}"/>
+        </bean>
+
+        <bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+            <property name="order" value="1"/>
+            <property name="contentNegotiationManager" ref="contentNegotiationManager"/>
+            <property name="defaultViews">
+                <list>
+                    <bean class="org.springframework.web.servlet.view.json.MappingJackson2JsonView"/>
+                </list>
+            </property>
+        </bean>
+    -->
 
     <!-- Allow Exceptions to be handled in annotated methods if desired.  Otherwise fallback to the
          'restExceptionResolver' below: -->
@@ -64,11 +66,12 @@
           class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerExceptionResolver">
         <property name="order" value="0"/>
     </bean>
+
     <bean id="restExceptionResolver" class="com.lh.spring.web.servlet.handler.RestExceptionHandler">
         <property name="order" value="100"/>
         <property name="messageConverters">
             <list>
-                <ref bean="jacksonHttpMessageConverter"/>
+                <ref bean="fastjonsConvertor"/>
             </list>
         </property>
         <property name="errorResolver">
@@ -78,7 +81,7 @@
                 <property name="exceptionMappingDefinitions">
                     <map>
                         <!-- 404 -->
-                        <entry key="com.lh.blog.spring.mvc.rest.exhandler.UnknownResourceException"
+                        <entry key="example.blog.spring.mvc.rest.exhandler.UnknownResourceException"
                                value="404, _exmsg"/>
 
                         <!-- 500 (catch all): -->
@@ -88,5 +91,4 @@
             </bean>
         </property>
     </bean>
-
 </beans>

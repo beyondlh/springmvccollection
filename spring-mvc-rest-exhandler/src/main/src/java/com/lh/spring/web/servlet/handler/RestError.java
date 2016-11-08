@@ -92,6 +92,7 @@ public class RestError {
         });
     }
 
+    @Override
     public String toString() {
         //noinspection StringBufferReplaceableByString
         return new StringBuilder().append(getStatus().value())

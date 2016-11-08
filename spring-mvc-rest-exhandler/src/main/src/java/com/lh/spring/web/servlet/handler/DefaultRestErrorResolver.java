@@ -143,6 +143,7 @@ public class DefaultRestErrorResolver implements RestErrorResolver, MessageSourc
         return status.value() + ", " + DEFAULT_EXCEPTION_MESSAGE_VALUE;
     }
 
+    /*得到RestError的实例*/
     public RestError resolveError(ServletWebRequest request, Object handler, Exception ex) {
 
         RestError template = getRestErrorTemplate(ex);

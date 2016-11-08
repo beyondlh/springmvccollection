@@ -33,7 +33,7 @@ public interface RestErrorResolver {
      *                (for example, if multipart resolution failed)
      * @param ex      the exception that was thrown during handler execution
      * @return a resolved {@code RestError} instance to render as the response body or <code>null</code> for default
-     *         processing
+     * processing
      */
     RestError resolveError(ServletWebRequest request, Object handler, Exception ex);
 }

@@ -104,7 +104,7 @@ import java.util.List;
  * @see DefaultRestErrorResolver
  * @see MapRestErrorConverter
  * @see HttpMessageConverter
- * @see org.springframework.http.converter.json.MappingJacksonHttpMessageConverter MappingJacksonHttpMessageConverter
+ * @see org.springframework.http.converter.json.MappingJackson2HttpMessageConverter MappingJacksonHttpMessageConverter
  *
  * @author Les Hazlewood
  */
