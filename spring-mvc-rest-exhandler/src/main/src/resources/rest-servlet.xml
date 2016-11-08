@@ -31,34 +31,31 @@
     <bean id="localeResolver" class="org.springframework.web.servlet.i18n.AcceptHeaderLocaleResolver"/>
 
     <bean id="fastjonsConvertor"
-          class="com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter4">
+          class="com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter">
     </bean>
 
 
-    <!--
+    <bean id="contentNegotiationManager" class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
+        <property name="mediaTypes">
+            <value>
+                html=text/html
+                json=application/json
+                json=application/callback
+                image=image/*
+            </value>
+        </property>
+        <property name="defaultContentType" value="#{T(org.springframework.http.MediaType).APPLICATION_JSON}"/>
+    </bean>
 
-        <bean id="contentNegotiationManager" class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
-            <property name="mediaTypes">
-                <value>
-                    html=text/html
-                    json=application/json
-                    json=application/callback
-                    image=image/*
-                </value>
-            </property>
-            <property name="defaultContentType" value="#{T(org.springframework.http.MediaType).APPLICATION_JSON}"/>
-        </bean>
-
-        <bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
-            <property name="order" value="1"/>
-            <property name="contentNegotiationManager" ref="contentNegotiationManager"/>
-            <property name="defaultViews">
-                <list>
-                    <bean class="org.springframework.web.servlet.view.json.MappingJackson2JsonView"/>
-                </list>
-            </property>
-        </bean>
-    -->
+    <bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+        <property name="order" value="1"/>
+        <property name="contentNegotiationManager" ref="contentNegotiationManager"/>
+        <property name="defaultViews">
+            <list>
+                <bean class="org.springframework.web.servlet.view.json.MappingJackson2JsonView"/>
+            </list>
+        </property>
+    </bean>
 
     <!-- Allow Exceptions to be handled in annotated methods if desired.  Otherwise fallback to the
          'restExceptionResolver' below: -->

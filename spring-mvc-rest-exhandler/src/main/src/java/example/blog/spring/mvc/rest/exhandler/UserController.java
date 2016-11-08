@@ -15,7 +15,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.GET;
 @RequestMapping("/users")
 public class UserController {
 
-    @RequestMapping(value = "/{username}", method = GET)
+    @RequestMapping(value = "/{username}", method = GET, produces = "application/json")
     @ResponseBody
     public User getUser(@PathVariable String username) {
         //simulate Manager/DAO call:
