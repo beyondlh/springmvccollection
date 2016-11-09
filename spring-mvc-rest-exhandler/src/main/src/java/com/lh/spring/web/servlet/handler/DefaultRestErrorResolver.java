@@ -274,7 +274,7 @@ public class DefaultRestErrorResolver implements RestErrorResolver, MessageSourc
         return getDepth(exceptionMapping, ex.getClass(), 0);
     }
 
-    private int getDepth(String exceptionMapping, Class exceptionClass, int depth) {
+    private int getDepth(String exceptionMapping, Class exceptionClass,  int depth) {
         if (exceptionClass.getName().contains(exceptionMapping)) {
             // Found it!
             return depth;

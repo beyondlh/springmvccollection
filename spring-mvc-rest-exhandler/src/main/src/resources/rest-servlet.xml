@@ -28,6 +28,7 @@
             </mvc:interceptor>
         </mvc:interceptors>-->
 
+
     <bean id="localeResolver" class="org.springframework.web.servlet.i18n.AcceptHeaderLocaleResolver"/>
 
     <bean id="fastjonsConvertor"
@@ -65,7 +66,7 @@
     </bean>
 
     <bean id="restExceptionResolver" class="com.lh.spring.web.servlet.handler.RestExceptionHandler">
-        <property name="order" value="100"/>
+        <property name="order" value="10"/>
         <property name="messageConverters">
             <list>
                 <ref bean="fastjonsConvertor"/>
@@ -80,7 +81,9 @@
                         <!-- 404 -->
                         <entry key="example.blog.spring.mvc.rest.exhandler.UnknownResourceException"
                                value="404, _exmsg"/>
-
+                        <!--405-->
+                        <entry key="org.springframework.web.HttpRequestMethodNotSupportedException"
+                               value="405, _exmsg"/>
                         <!-- 500 (catch all): -->
                         <entry key="Throwable" value="500"/>
                     </map>

@@ -5,6 +5,8 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.context.ContextLoader;
+import org.springframework.web.context.WebApplicationContext;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
@@ -19,6 +21,10 @@ public class UserController {
     @ResponseBody
     public User getUser(@PathVariable String username) {
         //simulate Manager/DAO call:
+        WebApplicationContext wac = ContextLoader.getCurrentWebApplicationContext();
+        if(wac!=null){
+            wac.getBean("fastjonsConvertor");
+        }
         return findUser(username);
     }
 
