@@ -1,11 +1,13 @@
 package example.blog.spring.mvc.rest.exhandler;
 
+import com.lh.spring.web.servlet.handler.TestBean;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.context.ContextLoader;
+import org.springframework.web.context.ContextLoaderListener;
 import org.springframework.web.context.WebApplicationContext;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
@@ -22,8 +24,16 @@ public class UserController {
     public User getUser(@PathVariable String username) {
         //simulate Manager/DAO call:
         WebApplicationContext wac = ContextLoader.getCurrentWebApplicationContext();
-        if(wac!=null){
-            wac.getBean("fastjonsConvertor");
+        TestBean testBean = null;
+        if (wac != null) {
+            testBean = (TestBean) wac.getBean(TestBean.class);
+            if(testBean!=null){
+                System.out.print("testBean不为null");
+            }
+        }
+        WebApplicationContext wac2 = ContextLoaderListener.getCurrentWebApplicationContext();
+        if (wac2 != null) {
+//            wac2.getBean("fastjonsConvertor");
         }
         return findUser(username);
     }
