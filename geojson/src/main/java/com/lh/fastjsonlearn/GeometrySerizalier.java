@@ -9,11 +9,12 @@ import java.lang.reflect.Type;
 /**
  * Created by lh on 2016/11/15.
  */
-public class ModelValueSerializer implements ObjectSerializer {
+public class GeometrySerizalier implements ObjectSerializer {
     @Override
     public void write(JSONSerializer jsonSerializer, Object object, Object fieldName, Type fieldType, int features) throws IOException {
-        String name = (String) object;
-        name = name + "先生";
-        jsonSerializer.write(name);
+        if (fieldName != "the_geo") {
+            String name = (String) object;
+            jsonSerializer.write(name);
+        }
     }
 }

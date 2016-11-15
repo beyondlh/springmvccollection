@@ -10,7 +10,7 @@ public class User {
     @JSONField(serialize = false)
     private Long id;
 
-    @JSONField(name="CustomName",serializeUsing = ModelValueSerializer.class)
+    @JSONField(name="CustomName",serializeUsing = GeometrySerizalier.class)
     private String name;
 
     public Long getId() {
