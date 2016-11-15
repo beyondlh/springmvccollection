@@ -9,7 +9,8 @@ import org.springframework.stereotype.Controller;
 @Controller
 public class TestBean {
     /*尝试值自动注入*/
-    @Value("configuration.keyword")
+//    @Value("configuration.keyword")
+    @Value("testvalue")
     String name;
     String age;
 }

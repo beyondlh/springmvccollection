@@ -1,0 +1,46 @@
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0">
+    <parent>
+        <artifactId>springmvccollection</artifactId>
+        <groupId>com.lh</groupId>
+        <version>0.0.1</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>geojson</artifactId>
+    <packaging>war</packaging>
+    <name>geojson</name>
+    <properties>
+        <tapestry-release-version>5.4.1</tapestry-release-version>
+        <servlet-api-release-version>2.5</servlet-api-release-version>
+        <testng-release-version>6.8.21</testng-release-version>
+        <slf4j-release-version>1.7.19</slf4j-release-version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <spring.bom.version>4.2.3.RELEASE</spring.bom.version>
+        <!-- use the latest snapshot -->
+        <geotools.version>17-SNAPSHOT</geotools.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.geotools</groupId>
+            <artifactId>gt-shapefile</artifactId>
+            <version>${geotools.version}</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <finalName>geojson</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.3.2</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                    <optimize>true</optimize>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
