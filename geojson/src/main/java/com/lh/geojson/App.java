@@ -5,7 +5,7 @@ package com.lh.geojson;
  */
 public class App {
     public static void main(String[] args) {
-        AppConfig appConfig = (AppConfig) ApplicationContextUtil.getBean(AppConfig.class);
-        System.out.println(appConfig.filePath);
+        AppConfig appConfig = (AppConfig) ApplicationContextHelper.getBean(AppConfig.class);
+        System.out.println(appConfig.shapeFilePathDir);
     }
 }

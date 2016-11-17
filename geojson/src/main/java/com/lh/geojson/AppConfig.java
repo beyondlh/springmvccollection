@@ -35,9 +35,8 @@ public class AppConfig {
     */
     Logger logger = LoggerFactory.getLogger(AppConfig.class);
 
-    //    @Value("${shape.dir}")
-    @Value("${mytest.value}")
-    String filePath;
+    @Value("${shape.dir}")
+    String shapeFilePathDir;
 
     @PostConstruct
     void getFeaturesFromShape() throws IOException {
@@ -69,7 +68,7 @@ public class AppConfig {
         logger.info("Fruit:  {},{}", fruits);*/
 
 
-        /*File file = new File(this.filePath);
+        /*File file = new File(this.shapeFilePathDir);
         Map<String, Object> map = new HashMap<>();
         map.put("url", file.toURI().toURL());
         map.put("charset", "gbk");

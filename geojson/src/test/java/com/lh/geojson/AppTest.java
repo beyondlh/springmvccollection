@@ -12,6 +12,6 @@ public class AppTest extends SpringTestUtil{
     AppConfig appConfig;
     @Test
     public void test(){
-        System.out.println(appConfig.filePath);
+        System.out.println(appConfig.shapeFilePathDir);
     }
 }
