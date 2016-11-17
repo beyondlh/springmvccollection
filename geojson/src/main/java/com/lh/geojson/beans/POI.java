@@ -1,16 +1,19 @@
 package com.lh.geojson.beans;
 
+import com.alibaba.fastjson.annotation.JSONField;
 import com.vividsolutions.jts.geom.Geometry;
 
 /**
  * Created by lh on 2016/11/17.
  * 返回的数据
  */
-public class Poi {
+public class POI {
     String address;
     String name;
     String tel;
+    String GeometryText;
 
+    @JSONField(serialize = false)
     Geometry geometry;
 
     public String getAddress() {
@@ -37,18 +40,25 @@ public class Poi {
         this.tel = tel;
     }
 
-    public Geometry getGeometry() {
-        return geometry;
+    @JSONField(name = "Geometry")
+    public String getGeometryText() {
+        return this.GeometryText;
+    }
+
+
+    public void setGeometryText(String geometryText) {
+        this.GeometryText = geometryText;
     }
 
     public void setGeometry(Geometry geometry) {
         this.geometry = geometry;
+        setGeometryText(geometry.toText());
     }
 
     @Override
     public boolean equals(Object obj) {
-        if (obj instanceof Poi) {
-            Poi poi = (Poi) obj;
+        if (obj instanceof POI) {
+            POI poi = (POI) obj;
             if (this.name == poi.name && this.address == poi.address && this.tel == poi.tel && this.geometry.equals(poi.geometry)) {
                 return true;
             }
