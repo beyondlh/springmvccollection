@@ -35,7 +35,7 @@ public class AppConfig {
     */
     Logger logger = LoggerFactory.getLogger(AppConfig.class);
 
-//    @Value("${shape.dir}")
+    //    @Value("${shape.dir}")
     @Value("${mytest.value}")
     String filePath;
 
@@ -47,7 +47,7 @@ public class AppConfig {
 //        logger.setLevel(Level. INFO);
 
         logger.trace("======trace");
-        if(logger.isDebugEnabled()){
+        if (logger.isDebugEnabled()) {
             logger.debug("======debug");
         }
         logger.info("======info");

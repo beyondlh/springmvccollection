@@ -37,6 +37,28 @@
             <artifactId>gt-geojson</artifactId>
             <version>${geotools.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.apache.lucene</groupId>
+            <artifactId>lucene-analyzers</artifactId>
+            <version>3.6.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.lucene</groupId>
+            <artifactId>lucene-core</artifactId>
+            <version>3.6.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.lucene</groupId>
+            <artifactId>lucene-spatial</artifactId>
+            <version>3.6.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.wltea.analyzer</groupId>
+            <artifactId>IKAnalyzer</artifactId>
+            <version>2012_u6</version>
+        </dependency>
+
     </dependencies>
 
     <repositories>
