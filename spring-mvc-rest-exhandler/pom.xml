@@ -12,6 +12,13 @@
         <artifactId>springmvccollection</artifactId>
         <version>0.0.1</version>
     </parent>
+    <dependencies>
+        <dependency>
+            <groupId>org.logback-extensions</groupId>
+            <artifactId>logback-ext-spring</artifactId>
+            <version>0.1.1</version>
+        </dependency>
+    </dependencies>
     
     <build>
         <plugins>
