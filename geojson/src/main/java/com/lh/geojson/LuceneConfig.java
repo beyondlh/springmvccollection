@@ -12,6 +12,8 @@ import org.apache.lucene.util.Version;
 import org.apache.taglibs.standard.lang.jstl.test.beans.PublicBean1;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.InitBinder;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
@@ -25,11 +27,38 @@ import java.io.IOException;
 public class LuceneConfig {
 
     @Value("${shape.dir}")
-    private String indexFilePath;
-
+    String indexFilePath;
 
     private Analyzer analyzer = new StandardAnalyzer(Version.LUCENE_40);
     private IndexWriterConfig indexWriterConfig = new IndexWriterConfig(Version.LUCENE_40, analyzer);
+
+
+    private IndexWriter indexWriter;
+    private IndexReader indexReader;
+    private IndexSearcher indexSearcher;
+
+    public LuceneConfig() {
+
+    }
+
+    @PostConstruct
+    void init() {
+        try {
+            File file = new File(indexFilePath);
+            if (file.exists()) {
+                file.delete();
+            }
+            FSDirectory directory = FSDirectory.open(file);
+            this.indexWriterConfig.setOpenMode(IndexWriterConfig.OpenMode.CREATE);
+            if (this.getIndexWriter() == null) {
+                this.indexWriter = new IndexWriter(directory, indexWriterConfig);
+            }
+        } catch (IOException ex) {
+
+        }
+    }
+
+
 
     public String getIndexFilePath() {
         return indexFilePath;
@@ -53,7 +82,7 @@ public class LuceneConfig {
     }
 
     public IndexWriter getIndexWriter() {
-        return indexWriter;
+        return this.indexWriter;
     }
 
     public void setIndexWriter(IndexWriter indexWriter) {
@@ -74,45 +103,5 @@ public class LuceneConfig {
 
     public void setIndexSearcher(IndexSearcher indexSearcher) {
         this.indexSearcher = indexSearcher;
-    }
-
-//    public static LuceneConfig getLuceneConfig() {
-//        return luceneConfig;
-//    }
-
-//    public static void setLuceneConfig(LuceneConfig luceneConfig) {
-//        LuceneConfig.luceneConfig = luceneConfig;
-//    }
-
-    private IndexWriter indexWriter;
-    private IndexReader indexReader;
-    private IndexSearcher indexSearcher;
-
-
-//    private static LuceneConfig luceneConfig = new LuceneConfig();
-
-/*    public static LuceneConfig getInstance() {
-        return luceneConfig;
-    }*/
-
-    public LuceneConfig() {
-        System.out.println("构造函数");
-        System.out.println("this.getIndexFilePath():" + this.getIndexFilePath());
-    }
-
-    @PostConstruct
-    void init() {
-        System.out.println("postconstruct");
-        System.out.println("this.getIndexFilePath():" + this.getIndexFilePath());
-          try {
-
-            FSDirectory directory = FSDirectory.open(new File(this.indexFilePath + "\\index"));
-            indexReader = DirectoryReader.open(directory);
-            indexSearcher = new IndexSearcher(indexReader);
-            indexWriterConfig.setOpenMode(IndexWriterConfig.OpenMode.CREATE);
-            indexWriter = new IndexWriter(directory, indexWriterConfig);
-        } catch (IOException ex) {
-
-        }
     }
 }

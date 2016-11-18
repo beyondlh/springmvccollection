@@ -23,11 +23,9 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
+import javax.annotation.Resource;
 import java.io.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by lh on 2016/11/15.
@@ -47,14 +45,18 @@ public class AppConfig {
     @Value("${feature.fileds}")
     String[] featureFields;
 
-    @Autowired(required = true)
+    @Autowired
     LuceneConfig luceneConfig;
 
     @PostConstruct
     void getFeaturesFromShape() throws IOException {
         IndexWriter indexWriter = luceneConfig.getIndexWriter();
+        if (indexWriter == null) {
+            logger.error("indexWriter为null");
+            return;
+        }
 
-        /*File file = new File(this.shapeFilePathDir);
+        File file = new File(this.shapeFilePathDir);
         Map<String, Object> map = new HashMap<>();
         map.put("url", file.toURI().toURL());
         map.put("charset", "gbk");
@@ -68,6 +70,8 @@ public class AppConfig {
         String[] typeNames = dataStore.getTypeNames();
         Query qurey = new Query();
         qurey.setPropertyNames(featureFields);
+        long starttime = System.currentTimeMillis();
+        System.out.println("开始时间:" + String.valueOf(starttime));
         for (String typeName : typeNames) {
             simpleFeatureList.clear();
             source = dataStore.getFeatureSource(typeName);
@@ -82,8 +86,12 @@ public class AppConfig {
                     indexWriter.addDocument(document);
                 }
             }
-            indexWriter.commit();
-            indexWriter.close();
-        }*/
+        }
+        indexWriter.commit();
+        indexWriter.close();
+        long endtime = System.currentTimeMillis();
+        Calendar c = Calendar.getInstance();
+        c.setTimeInMillis(endtime - starttime);
+        System.out.println("总共耗时:" + c.get(Calendar.MINUTE) + "分" + c.get(Calendar.SECOND) + "秒" + c.get(Calendar.MILLISECOND) + "毫秒");
     }
 }
