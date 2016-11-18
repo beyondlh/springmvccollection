@@ -33,9 +33,9 @@ public class LuceneConfig {
     private IndexWriterConfig indexWriterConfig = new IndexWriterConfig(Version.LUCENE_40, analyzer);
 
 
+    private FSDirectory directory;
     private IndexWriter indexWriter;
     private IndexReader indexReader;
-    private IndexSearcher indexSearcher;
 
     public LuceneConfig() {
 
@@ -48,7 +48,7 @@ public class LuceneConfig {
             if (file.exists()) {
                 file.delete();
             }
-            FSDirectory directory = FSDirectory.open(file);
+            directory = FSDirectory.open(file);
             this.indexWriterConfig.setOpenMode(IndexWriterConfig.OpenMode.CREATE);
             if (this.getIndexWriter() == null) {
                 this.indexWriter = new IndexWriter(directory, indexWriterConfig);
@@ -57,7 +57,6 @@ public class LuceneConfig {
 
         }
     }
-
 
 
     public String getIndexFilePath() {
@@ -89,19 +88,14 @@ public class LuceneConfig {
         this.indexWriter = indexWriter;
     }
 
-    public IndexReader getIndexReader() {
+    public IndexReader getIndexReader() throws IOException {
+        if (indexReader == null) {
+            indexReader = DirectoryReader.open(this.directory);
+        }
         return indexReader;
     }
 
     public void setIndexReader(IndexReader indexReader) {
         this.indexReader = indexReader;
-    }
-
-    public IndexSearcher getIndexSearcher() {
-        return indexSearcher;
-    }
-
-    public void setIndexSearcher(IndexSearcher indexSearcher) {
-        this.indexSearcher = indexSearcher;
     }
 }

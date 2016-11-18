@@ -46,7 +46,7 @@ public class AppConfig {
     String[] featureFields;
 
     @Autowired
-    LuceneConfig luceneConfig;
+    public LuceneConfig luceneConfig;
 
     @PostConstruct
     void getFeaturesFromShape() throws IOException {
@@ -94,4 +94,5 @@ public class AppConfig {
         c.setTimeInMillis(endtime - starttime);
         System.out.println("总共耗时:" + c.get(Calendar.MINUTE) + "分" + c.get(Calendar.SECOND) + "秒" + c.get(Calendar.MILLISECOND) + "毫秒");
     }
+
 }
