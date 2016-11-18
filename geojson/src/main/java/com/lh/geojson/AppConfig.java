@@ -1,6 +1,10 @@
 package com.lh.geojson;
 
 import ch.qos.logback.classic.Level;
+import org.apache.lucene.document.Document;
+import org.apache.lucene.document.Field;
+import org.apache.lucene.document.TextField;
+import org.apache.lucene.index.IndexWriter;
 import org.geotools.data.DataStore;
 import org.geotools.data.DataStoreFinder;
 import org.geotools.data.FeatureSource;
@@ -10,9 +14,11 @@ import org.geotools.feature.FeatureIterator;
 import org.geotools.geojson.feature.FeatureJSON;
 import org.opengis.feature.simple.SimpleFeature;
 import org.opengis.feature.simple.SimpleFeatureType;
+import org.opengis.feature.type.Name;
 import org.opengis.filter.Filter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -41,9 +47,14 @@ public class AppConfig {
     @Value("${feature.fileds}")
     String[] featureFields;
 
+    @Autowired(required = true)
+    LuceneConfig luceneConfig;
+
     @PostConstruct
     void getFeaturesFromShape() throws IOException {
-        File file = new File(this.shapeFilePathDir);
+        IndexWriter indexWriter = luceneConfig.getIndexWriter();
+
+        /*File file = new File(this.shapeFilePathDir);
         Map<String, Object> map = new HashMap<>();
         map.put("url", file.toURI().toURL());
         map.put("charset", "gbk");
@@ -57,7 +68,6 @@ public class AppConfig {
         String[] typeNames = dataStore.getTypeNames();
         Query qurey = new Query();
         qurey.setPropertyNames(featureFields);
-
         for (String typeName : typeNames) {
             simpleFeatureList.clear();
             source = dataStore.getFeatureSource(typeName);
@@ -65,10 +75,15 @@ public class AppConfig {
             try (FeatureIterator<SimpleFeature> features = collection.features()) {
                 while (features.hasNext()) {
                     SimpleFeature feature = features.next();
-                    simpleFeatureList.add(feature);
+                    Document document = new Document();
+                    for (String m : featureFields) {
+                        document.add(new TextField(m, feature.getAttribute(m).toString(), Field.Store.YES));
+                    }
+                    indexWriter.addDocument(document);
                 }
             }
-        }
-
+            indexWriter.commit();
+            indexWriter.close();
+        }*/
     }
 }

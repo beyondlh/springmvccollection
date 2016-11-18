@@ -10,6 +10,7 @@ public class AppTest extends SpringTestUtil{
 
     @Autowired
     AppConfig appConfig;
+
     @Test
     public void test(){
         System.out.println(appConfig.shapeFilePathDir);

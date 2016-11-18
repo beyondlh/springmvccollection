@@ -25,6 +25,8 @@
         <slf4j.version>1.7.19</slf4j.version>
         <junit.version>4.12</junit.version>
         <spring.test>4.3.0.RELEASE</spring.test>
+
+        <lucence.version>4.0.0</lucence.version>
     </properties>
     <dependencies>
         <!--Spring框架核心库 -->
@@ -155,6 +157,34 @@
                 <version>${spring.test}</version>
                 <scope>test</scope>
             </dependency>
+
+            <dependency>
+                <groupId>org.apache.lucene</groupId>
+                <artifactId>lucene-core</artifactId>
+                <version>${lucence.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.lucene</groupId>
+                <artifactId>lucene-queries</artifactId>
+                <version>${lucence.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.lucene</groupId>
+                <artifactId>lucene-test-framework</artifactId>
+                <version>${lucence.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.lucene</groupId>
+                <artifactId>lucene-analyzers-common</artifactId>
+                <version>${lucence.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.lucene</groupId>
+                <artifactId>lucene-queryparser</artifactId>
+                <version>${lucence.version}</version>
+            </dependency>
+
+
         </dependencies>
     </dependencyManagement>
     <build>
