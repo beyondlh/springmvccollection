@@ -57,6 +57,12 @@ public class AppConfig {
         }
 
         File file = new File(this.shapeFilePathDir);
+        File file2 = new File(luceneConfig.getIndexFilePath());
+        if(file2.exists()){
+            if(file2.listFiles().length>10){
+                return;
+            }
+        }
         Map<String, Object> map = new HashMap<>();
         map.put("url", file.toURI().toURL());
         map.put("charset", "gbk");
