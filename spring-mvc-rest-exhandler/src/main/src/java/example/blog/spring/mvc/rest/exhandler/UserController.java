@@ -61,6 +61,4 @@ public class UserController {
         //any other lookup throws an exception (not found):
         throw new UnknownResourceException("Unable to find user with username '" + username + "'");
     }
-
-
 }
