@@ -27,7 +27,7 @@ public class LuceneConfigTest extends SpringTestUtil {
     @Test
     public void test() throws IOException {
         int hitPerPage = 10;
-        String queryStr = "江西";
+        String queryStr = "昌北小学";
         IndexReader indexReader = appConfig.luceneConfig.getIndexReader();
         Query query = null;
         try {
@@ -44,7 +44,7 @@ public class LuceneConfigTest extends SpringTestUtil {
         for(ScoreDoc scoreDoc:scoreDocs){
             int docID = scoreDoc.doc;
             Document document = indexSearcher.doc(docID);
-            System.out.println(document.get("NAME"));
+            System.out.println(document.get("NAME") + "\t"+ document.get("ADDRESS"));
         }
 
     }

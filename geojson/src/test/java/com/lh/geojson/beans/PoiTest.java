@@ -4,14 +4,20 @@ import com.alibaba.fastjson.JSON;
 import com.vividsolutions.jts.geom.Coordinate;
 import com.vividsolutions.jts.geom.Geometry;
 import com.vividsolutions.jts.geom.GeometryFactory;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.*;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import static org.junit.Assert.assertThat;
 
 /**
  * Created by lh on 2016/11/17.
  */
 public class PoiTest {
-    @Test
+
+//    @Ignore
+    @Test()
     public void test() {
         Coordinate coordinate = new Coordinate(123, 456);
         GeometryFactory geometryFactory = new GeometryFactory();
@@ -34,5 +40,31 @@ public class PoiTest {
             System.out.println(JSON.toJSONString(poi));
         }
         Assert.assertEquals(poi, poi2);
+    }
+
+    @BeforeClass
+    public static void runOnceBeforeClass() {
+        System.out.println("@BeforeClass - runOnceBeforeClass");
+    }
+
+    // Run once, e.g close connection, cleanup
+    @AfterClass
+    public static void runOnceAfterClass() {
+        Map<String, String> map = new HashMap<>();
+        map.put("j", "java");
+        map.put("c", "c++");
+        map.put("p", "python");
+        map.put("n", "node");
+
+        Map<String, String> expected = new HashMap<>();
+        expected.put("n", "node");
+        expected.put("c", "c++");
+        expected.put("j", "java");
+        expected.put("p", "python");
+
+        //All passed / true
+
+        //1. Test equal, ignore order
+        System.out.println("@AfterClass - runOnceAfterClass");
     }
 }

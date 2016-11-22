@@ -26,7 +26,7 @@ import java.io.IOException;
 @Component
 public class LuceneConfig {
 
-    @Value("${shape.dir}")
+    @Value("${poi.index}")
     String indexFilePath;
 
     private Analyzer analyzer = new StandardAnalyzer(Version.LUCENE_40);
@@ -45,9 +45,6 @@ public class LuceneConfig {
     void init() {
         try {
             File file = new File(indexFilePath);
-            if (file.exists()) {
-                file.delete();
-            }
             directory = FSDirectory.open(file);
             this.indexWriterConfig.setOpenMode(IndexWriterConfig.OpenMode.CREATE);
             if (this.getIndexWriter() == null) {
