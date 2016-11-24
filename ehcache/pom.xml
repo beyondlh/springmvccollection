@@ -39,7 +39,7 @@
             <version>${spring.version}</version>
         </dependency>
 
-        <!-- ehcache 相关依赖  -->
+<!--         ehcache 相关依赖-->
         <dependency>
             <groupId>net.sf.ehcache</groupId>
             <artifactId>ehcache</artifactId>
@@ -78,6 +78,12 @@
             <artifactId>jsp-api</artifactId>
             <version>2.1</version>
             <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.logback-extensions</groupId>
+            <artifactId>logback-ext-spring</artifactId>
+            <version>0.1.1</version>
         </dependency>
 
         <!--单元测试依赖 -->

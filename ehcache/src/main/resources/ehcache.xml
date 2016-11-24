@@ -4,7 +4,7 @@
          updateCheck="false"
          monitoring="off"
          dynamicConfig="true">
-    <diskStore path="java.io.tempdir/testtest"></diskStore>
+    <diskStore path="java.io.tmpdir"></diskStore>
 
     <defaultCache
             maxElementsInMemory="1000"

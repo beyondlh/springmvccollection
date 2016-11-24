@@ -16,22 +16,8 @@
     <context:component-scan base-package="com.lh.ehcache"></context:component-scan>
     <!-- 启动 @AspectJ 支持 -->
     <aop:aspectj-autoproxy/>
-    <!-- 缓存配置 -->
-    <!-- 启用缓存注解功能(请将其配置在Spring主配置文件中) -->
-    <cache:annotation-driven cache-manager="cacheManager"/>
-    <beans profile="test">
-        <!-- EhCache Cache Manager Bean -->
-        <bean id="cacheManager" name="cacheManager"
-              class="org.springframework.cache.ehcache.EhCacheCacheManager"
-              p:cache-manager-ref="cacheManagerFactory"/>
 
-        <!-- EhCache configuration setup -->
-        <bean id="cacheManagerFactory" name="cacheManagerFactory"
-              class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean"
-              p:config-location="classpath*:ehcache.xml"
-              p:shared="true"/>
-    </beans>
-    <beans profile="product">
+    <!--<beans profile="product">-->
 
-    </beans>
+    <!--</beans>-->
 </beans>

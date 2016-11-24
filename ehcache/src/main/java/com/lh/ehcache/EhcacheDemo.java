@@ -1,13 +1,16 @@
 package com.lh.ehcache;
 
-import net.sf.ehcache.Cache;
-import net.sf.ehcache.CacheManager;
-import net.sf.ehcache.Ehcache;
-import net.sf.ehcache.Element;
+//import net.sf.ehcache.Cache;
+//import net.sf.ehcache.CacheManager;
+//import net.sf.ehcache.Ehcache;
+//import net.sf.ehcache.Element;
+import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
  * Created by lh on 2016/11/22.
  */
+//@RequestMapping("/test")
 public class EhcacheDemo {
     String name;
 //    public static void main(String[] args) {
