@@ -2,12 +2,14 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.lh.ehcache</groupId>
-    <artifactId>ehcache_project</artifactId>
+    <artifactId>ehcache</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>ehcache_project</name>
+    <packaging>war</packaging>
+    <name>ehcache</name>
     <properties>
         <!-- spring版本号 -->
-        <spring.version>4.3.0.RELEASE</spring.version>
+        <!--<spring.version>4.3.0.RELEASE</spring.version>-->
+        <spring.version>3.1.1.RELEASE</spring.version>
         <ehcache.version>2.10.1</ehcache.version>
         <!-- junit版本号 -->
         <junit.version>4.10</junit.version>
@@ -30,9 +32,10 @@
             <artifactId>spring-context-support</artifactId>
             <version>${spring.version}</version>
         </dependency>
+
         <dependency>
             <groupId>org.springframework</groupId>
-            <artifactId>spring-context-support</artifactId>
+            <artifactId>spring-webmvc</artifactId>
             <version>${spring.version}</version>
         </dependency>
 
@@ -44,9 +47,37 @@
         </dependency>
 
         <dependency>
+            <groupId>net.sf.ehcache</groupId>
+            <artifactId>ehcache-web</artifactId>
+            <version>2.0.4</version>
+        </dependency>
+
+        <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
             <version>1.1.7</version>
+        </dependency>
+
+        <!-- JSTL -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.2</version>
+        </dependency>
+        <!-- Servlet核心包 -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>3.0.1</version>
+            <scope>provided</scope>
+        </dependency>
+        <!--web开发常需要引入的-->
+        <!--JSP-->
+        <dependency>
+            <groupId>javax.servlet.jsp</groupId>
+            <artifactId>jsp-api</artifactId>
+            <version>2.1</version>
+            <scope>provided</scope>
         </dependency>
 
         <!--单元测试依赖 -->
@@ -66,7 +97,7 @@
         </dependency>
     </dependencies>
     <build>
-        <finalName>ehcache_project</finalName>
+        <finalName>ehcache</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

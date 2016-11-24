@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:p="http://www.springframework.org/schema/p" xmlns:cache="http://www.springframework.org/schema/cache"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context 
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop.xsd http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache.xsd">
+
+    <description>Spring公共配置文件</description>
+    <context:property-placeholder location="classpath:application.properties"/>
+    <context:component-scan base-package="com.lh.ehcache"></context:component-scan>
+    <!-- 启动 @AspectJ 支持 -->
+    <aop:aspectj-autoproxy/>
+    <!-- 缓存配置 -->
+    <!-- 启用缓存注解功能(请将其配置在Spring主配置文件中) -->
+    <cache:annotation-driven cache-manager="cacheManager"/>
+    <beans profile="test">
+        <!-- EhCache Cache Manager Bean -->
+        <bean id="cacheManager" name="cacheManager"
+              class="org.springframework.cache.ehcache.EhCacheCacheManager"
+              p:cache-manager-ref="cacheManagerFactory"/>
+
+        <!-- EhCache configuration setup -->
+        <bean id="cacheManagerFactory" name="cacheManagerFactory"
+              class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean"
+              p:config-location="classpath*:ehcache.xml"
+              p:shared="true"/>
+    </beans>
+    <beans profile="product">
+
+    </beans>
+</beans>
