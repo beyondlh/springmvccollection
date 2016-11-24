@@ -12,6 +12,6 @@
     <%=new Date()%>
 </head>
 <body>
-
+<%=new Date()%>
 </body>
 </html>

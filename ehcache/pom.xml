@@ -39,12 +39,19 @@
             <version>${spring.version}</version>
         </dependency>
 
-<!--         ehcache 相关依赖-->
+         <!--ehcache 相关依赖-->
         <dependency>
             <groupId>net.sf.ehcache</groupId>
             <artifactId>ehcache</artifactId>
             <version>${ehcache.version}</version>
         </dependency>
+
+        <!--<dependency>-->
+            <!--<groupId>com.googlecode.ehcache-spring-annotations</groupId>-->
+            <!--<artifactId>ehcache-spring-annotations</artifactId>-->
+            <!--<type>jar</type>-->
+            <!--<version>1.2.0</version>-->
+        <!--</dependency>-->
 
         <dependency>
             <groupId>net.sf.ehcache</groupId>
@@ -80,11 +87,6 @@
             <scope>provided</scope>
         </dependency>
 
-        <dependency>
-            <groupId>org.logback-extensions</groupId>
-            <artifactId>logback-ext-spring</artifactId>
-            <version>0.1.1</version>
-        </dependency>
 
         <!--单元测试依赖 -->
         <dependency>
@@ -110,8 +112,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>2.3.2</version>
                 <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
+                    <source>1.7</source>
+                    <target>1.7</target>
                     <optimize>true</optimize>
                 </configuration>
             </plugin>

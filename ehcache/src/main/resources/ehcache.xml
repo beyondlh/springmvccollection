@@ -4,18 +4,25 @@
          updateCheck="false"
          monitoring="off"
          dynamicConfig="true">
-    <diskStore path="java.io.tmpdir"></diskStore>
 
-    <defaultCache
-            maxElementsInMemory="1000"
-            eternal="false"
-            timeToIdleSeconds="120"
-            timeToLiveSeconds="120"
-            overflowToDisk="false"/>
+    <diskStore path="java.io.tmpdir" />
+
+
     <cache name="employeeCache"
-           maxElementsInMemory="5000"
+           maxEntriesLocalHeap="10000"
+           maxElementsOnDisk="1000"
            eternal="false"
-           overflowToDisk="true"
+           overflowToDisk="false"
+           timeToIdleSeconds="300"
+           timeToLiveSeconds="600"
            memoryStoreEvictionPolicy="LFU"/>
 
+    <cache name="SimplePageCachingFilter"
+           maxEntriesLocalHeap="10000"
+           maxElementsOnDisk="1000"
+           eternal="false"
+           overflowToDisk="false"
+           timeToIdleSeconds="300"
+           timeToLiveSeconds="600"
+           memoryStoreEvictionPolicy="LFU"/>
 </ehcache>

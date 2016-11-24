@@ -11,6 +11,6 @@
     <title><%=new Date()%></title>
 </head>
 <body>
-
+<%=new Date()%>
 </body>
 </html>
