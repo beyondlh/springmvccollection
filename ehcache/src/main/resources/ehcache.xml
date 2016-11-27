@@ -1,27 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:noNamespaceSchemaLocation="ehcache.xsd"
-         updateCheck="false"
-         monitoring="off"
-         dynamicConfig="true">
+         xsi:noNamespaceSchemaLocation="ehcache.xsd" updateCheck="true"
+         dynamicConfig="true"
+         monitoring="autodetect">
+    <!-- <diskStore path="java.io.tmpdir" /> -->
+    <diskStore path="E:/cachetmpdir"/>
+    <defaultCache maxElementsInMemory="10000"
+                  eternal="false"
+                  timeToIdleSeconds="120"
+                  timeToLiveSeconds="120"
+                  overflowToDisk="true"
+                  maxElementsOnDisk="10000000"
+                  diskPersistent="false"
+                  diskExpiryThreadIntervalSeconds="120"
+                  memoryStoreEvictionPolicy="LRU"/>
 
-    <diskStore path="java.io.tmpdir" />
-
-
-    <cache name="employeeCache"
-           maxEntriesLocalHeap="10000"
+    <cache name="SimplePageCachingFilter" maxElementsInMemory="10000"
            maxElementsOnDisk="1000"
            eternal="false"
-           overflowToDisk="false"
-           timeToIdleSeconds="300"
-           timeToLiveSeconds="600"
-           memoryStoreEvictionPolicy="LFU"/>
-
-    <cache name="SimplePageCachingFilter"
-           maxEntriesLocalHeap="10000"
-           maxElementsOnDisk="1000"
-           eternal="false"
-           overflowToDisk="false"
+           overflowToDisk="true"
+           diskSpoolBufferSizeMB="20"
            timeToIdleSeconds="300"
            timeToLiveSeconds="600"
            memoryStoreEvictionPolicy="LFU"/>

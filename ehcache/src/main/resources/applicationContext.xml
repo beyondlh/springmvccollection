@@ -14,10 +14,11 @@
     <description>Spring公共配置文件</description>
     <context:property-placeholder location="classpath:application.properties"/>
     <context:component-scan base-package="com.lh.ehcache"></context:component-scan>
-    <!-- 启动 @AspectJ 支持 -->
-    <aop:aspectj-autoproxy/>
+    <cache:annotation-driven cache-manager="cacheManager"/>
 
-    <!--<beans profile="product">-->
+    <bean id="cacheManager" class="org.springframework.cache.ehcache.EhCacheCacheManager"
+          p:cacheManager-ref="cacheManagerFactory"/>
 
-    <!--</beans>-->
+    <bean id="cacheManagerFactory" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean"
+          p:configLocation="classpath:ehcache.xml" p:shared="true"/>
 </beans>
