@@ -8,8 +8,8 @@ import java.io.IOException;
 /**
  * Created by lh on 2016/12/16.
  */
-public class FTPUtil {
-    {
+public class ReadText {
+/*    {
         FTPClient ftpClient = new FTPClient();
         try {
             ftpClient.connect("211.101.37.253",21);
@@ -19,7 +19,7 @@ public class FTPUtil {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
+    }*/
     public static void DownloadConfigFile() {
 
     }

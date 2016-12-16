@@ -47,6 +47,7 @@ public class FTPUtilTest {
                     os = new FileOutputStream(tempFile);
                     bufferedOutputStream = new BufferedOutputStream(os, 1024);
                     ftpClient.retrieveFile(new String((remoteDir + "/" + name).getBytes(), "iso-8859-1"), bufferedOutputStream);
+
                     bufferedOutputStream.flush();
                     bufferedOutputStream.close();
                     os.flush();
