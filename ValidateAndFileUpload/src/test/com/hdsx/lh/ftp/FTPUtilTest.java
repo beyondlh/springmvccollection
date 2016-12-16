@@ -20,14 +20,18 @@ public class FTPUtilTest {
 
     @Test
     public void test() {
+        Boolean login = false;
         FTPClient ftpClient = new FTPClient();
         FTPClientConfig conf = new FTPClientConfig(FTPClientConfig.SYST_UNIX);
         conf.setServerLanguageCode("zh");
         ftpClient.configure(conf);
         try {
-            ftpClient.connect("");
-            ftpClient.login("leih", "leih123");
-            System.out.println("登录成功.");
+            ftpClient.connect("211.101.37.253");
+            login = ftpClient.login("leih", "leih123");
+            if (!login) {
+                System.out.println("登录失败.");
+                return;
+            }
             ftpClient.setControlEncoding("GBK");//   gb2312
             ftpClient.enterLocalPassiveMode();
             ftpClient.setFileType(FTP.BINARY_FILE_TYPE);
@@ -35,7 +39,7 @@ public class FTPUtilTest {
             System.out.println("目录" + remoteDir + "下的文件:");
             if (remoteFiles != null) {
                 String filePath = "D:\\TEST\\";
-                for (int i = 0; i < 2; i++) {
+                for (int i = 0; i < 1; i++) {
                     OutputStream os = null;
                     BufferedOutputStream bufferedOutputStream = null;
                     String name = remoteFiles[i].getName();
