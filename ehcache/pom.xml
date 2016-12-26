@@ -46,12 +46,6 @@
             <version>${ehcache.version}</version>
         </dependency>
 
-        <!--<dependency>-->
-            <!--<groupId>com.googlecode.ehcache-spring-annotations</groupId>-->
-            <!--<artifactId>ehcache-spring-annotations</artifactId>-->
-            <!--<type>jar</type>-->
-            <!--<version>1.2.0</version>-->
-        <!--</dependency>-->
 
         <dependency>
             <groupId>net.sf.ehcache</groupId>
@@ -86,7 +80,6 @@
             <version>2.1</version>
             <scope>provided</scope>
         </dependency>
-
 
         <!--单元测试依赖 -->
         <dependency>

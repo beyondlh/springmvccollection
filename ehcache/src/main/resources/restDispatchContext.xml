@@ -15,11 +15,6 @@
 
     <context:component-scan base-package="com.lh.ehcache"/>
     <mvc:resources mapping="*.html" location="/WEB-INF/"></mvc:resources>
-    <!-- 缓存配置 -->
-    <!-- 启用缓存注解功能(请将其配置在Spring主配置文件中) -->
-    <!--<cache:annotation-driven cache-manager="cacheManager"/>-->
-    <cache:annotation-driven cache-manager="cacheManager"/>
-
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/**"></property>
         <property name="suffix" value=".jsp"></property>

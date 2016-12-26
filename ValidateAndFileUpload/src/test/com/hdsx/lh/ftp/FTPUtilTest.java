@@ -58,8 +58,8 @@ public class FTPUtilTest {
             e.printStackTrace();
         } finally {
             try {
-                ftpClient.logout();
-                ftpClient.disconnect();
+                    ftpClient.logout();
+                    ftpClient.disconnect();
             } catch (IOException ioe) {
                 ioe.printStackTrace();
             }
