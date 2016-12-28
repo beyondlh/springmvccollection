@@ -113,7 +113,8 @@ public class CarServiceTest {
      * @throws Exception
      */
 //    测试不直接调用缓存方法，而是在类内部调用，这种方式无法命中缓存
-//    注意和限制基于 proxy 的 spring aop 带来的内部调用问题,spring cache 的原理，即它是基于动态生成的 proxy 代理机制来对方法的调用进行切面，这里关键点是对象的引用问题，如果对象的方法是内部调用（即 this 引用）而不是外部引用，则会导致 proxy 失效，那么我们的切面就失效，也就是说上面定义的各种注释包括 @Cacheable、@CachePut 和 @CacheEvict 都会失效,可以使用基于 aspectJ 的 AOP 模式来解决这个问题。非 public 方法问题和内部调用问题类似，非 public 方法如果想实现基于注释的缓存，必须采用基于 AspectJ 的 AOP 机制
+//    注意和限制基于 proxy 的 spring aop 带来的内部调用问题,spring cache 的原理，即它是基于动态生成的 proxy 代理机制来对方法的调用进行切面，这里关键点是对象的引用问题，如果对象的方法是内部调用（即 this 引用）而不是外部引用，则会导致 proxy 失效，那么我们的切面就失效，也就是说上面定义的各种注释包括 @Cacheable、@CachePut 和 @CacheEvict 都会失效,可以使用基于 aspectJ 的 AOP 模式来解决这个问题。非 public 方法问题和内部调用问题类似，非 public 方法如果想实现基于注释的缓存，必须采用基于 AspectJ 的 AOP 机制，
+// 深入研究以及解决方案可参考http://www.iteye.com/topic/494124
     @Test
     public void testGetMapCarttt() throws Exception {
         List<Car> listCar = carServiceImpl1.testNoCacheGetListCar();  // find the last car added
