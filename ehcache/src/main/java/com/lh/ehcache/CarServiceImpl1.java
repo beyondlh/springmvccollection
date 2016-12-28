@@ -1,5 +1,7 @@
 package com.lh.ehcache;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
@@ -9,7 +11,7 @@ import java.util.*;
  * Created by lh on 2016/12/26.
  */
 @Service
-public class CarServiceImpl {
+public class CarServiceImpl1 implements CarService {
 
 //    private Logger logger = LoggerFactory.getLogger(getClass());
 
@@ -25,8 +27,10 @@ public class CarServiceImpl {
         car.setMake("make");
         car.setModel("model");
         car.setVin("vin");
+
         // Add to my list of all cars
         cars.add(car);
+
         return car;
     }
 
