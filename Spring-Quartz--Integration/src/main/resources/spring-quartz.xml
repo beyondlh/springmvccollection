@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!-- 工作的bean -->
+    <bean id="myJob" class="com.lh.quartz.job.MyJobThree"/>
+
+    <bean id="myTest" class="com.lh.quartz.job.Test2">
+        <constructor-arg name="name" value="lh"/>
+    </bean>
+
+    <!--Quartz每次调度Job时， 都重新创建一个Job实例， 所以它不直接接受一个Job的实例，相反它接收一个Job实现类(JobDetail:描述Job的实现类及其它相关的静态信息，如Job名字、描述、关联监听器等信息)，以便运行时通过newInstance()的反射机制实例化Job。-->
+    <bean id="jobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <!-- 指定任务类 -->
+        <property name="targetObject" ref="myJob"/>
+        <!-- 指定任务执行的方法 -->
+        <property name="targetMethod" value="execute"/>
+    </bean>
+
+
+    <!--是一个类，描述触发Job执行的时间触发规则。主要有SimpleTrigger和CronTrigger这两个子类。当且仅当需调度一次或者以固定时间间隔周期执行调度，SimpleTrigger是最适合的选择；而CronTrigger则可以通过Cron表达式定义出各种复杂时间规则的调度方案：如工作日周一到周五的15：00~16：00执行调度等；-->
+    <!-- 触发器配置开始 -->
+    <bean id="sampleJobTrigger" class="org.springframework.scheduling.quartz.SimpleTriggerFactoryBean">
+        <property name="jobDetail" ref="jobDetail"></property>
+        <property name="group" value="testGroup"></property>
+        <property name="name" value="trigger1"></property>
+        <property name="startDelay" value="5000"></property>
+        <property name="repeatInterval" value="5000"></property>
+        <property name="repeatCount" value="5" />
+    </bean>
+    <!-- 触发器配置结束 -->
+
+
+    <!-- 启动触发器的配置开始 -->
+    <bean name="startQuertz" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+        <property name="triggers">
+            <list>
+                <ref bean="sampleJobTrigger"/>
+            </list>
+        </property>
+    </bean>
+    <!-- 启动触发器的配置结束 -->
+</beans>
