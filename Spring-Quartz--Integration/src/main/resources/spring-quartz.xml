@@ -5,7 +5,7 @@
     <!-- 工作的bean -->
     <bean id="myJob" class="com.lh.quartz.job.MyJobThree"/>
 
-    <bean id="myTest" class="com.lh.quartz.job.Test2">
+    <bean id="myTest" class="com.lh.quartz.job.Test2" init-method="tt">
         <constructor-arg name="name" value="lh"/>
     </bean>
 
@@ -26,7 +26,7 @@
         <property name="name" value="trigger1"></property>
         <property name="startDelay" value="5000"></property>
         <property name="repeatInterval" value="5000"></property>
-        <property name="repeatCount" value="5" />
+        <property name="repeatCount" value="5"/>
     </bean>
     <!-- 触发器配置结束 -->
 

@@ -20,7 +20,10 @@
     <mvc:annotation-driven enable-matrix-variables="true"/>
     <mvc:resources mapping="/jslib/**" location="/jslib/"></mvc:resources>
     <!--自动扫描的包名-->
-    <context:component-scan base-package="com.lh.quartz.job"/>
+    <context:component-scan base-package="com.lh.quartz.job">
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Component"/>
+    </context:component-scan>
+
     <!--<mvc:default-servlet-handler/>-->
     <!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
 
