@@ -3,16 +3,18 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
     <!-- 工作的bean -->
-    <bean id="myJob" class="com.lh.quartz.job.MyJobThree"/>
+    <!--<bean id="myJob" class="com.lh.quartz.job.MyJobThree"/>-->
 
-    <bean id="myTest" class="com.lh.quartz.job.Test2" init-method="tt">
-        <constructor-arg name="name" value="lh"/>
-    </bean>
+    <!--<bean id="myTest" class="com.lh.quartz.job.TestService" init-method="tt">-->
+        <!--<constructor-arg name="name" value="lh"/>-->
+    <!--</bean>-->
 
     <!--Quartz每次调度Job时， 都重新创建一个Job实例， 所以它不直接接受一个Job的实例，相反它接收一个Job实现类(JobDetail:描述Job的实现类及其它相关的静态信息，如Job名字、描述、关联监听器等信息)，以便运行时通过newInstance()的反射机制实例化Job。-->
     <bean id="jobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+
+        <property name="targetBeanName" value="myJob"></property>
         <!-- 指定任务类 -->
-        <property name="targetObject" ref="myJob"/>
+        <!--<property name="targetObject" ref="myJob"/>-->
         <!-- 指定任务执行的方法 -->
         <property name="targetMethod" value="execute"/>
     </bean>
@@ -26,7 +28,7 @@
         <property name="name" value="trigger1"></property>
         <property name="startDelay" value="5000"></property>
         <property name="repeatInterval" value="5000"></property>
-        <property name="repeatCount" value="5"/>
+        <!--<property name="repeatCount" value="5"/>-->
     </bean>
     <!-- 触发器配置结束 -->
 

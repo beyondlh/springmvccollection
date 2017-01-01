@@ -1,23 +1,26 @@
 package com.lh.quartz.job;
 
+import org.springframework.stereotype.Service;
+
 /**
  * Created by lh on 2016/12/31.
  */
-public class Test2 {
+@Service
+public class TestService {
 
     String name = "lh";
 
-    public Test2() {
+    public TestService() {
         System.out.println("name:" + name);
     }
 
-    public Test2(String name) {
+    public TestService(String name) {
         this.name = name;
         System.out.println("name:" + name);
     }
 
-    void tt() {
-        System.out.println("Test2构造函数调用");
+    public void tt() {
+        System.out.println("Test输出");
     }
 
     public String getName() {

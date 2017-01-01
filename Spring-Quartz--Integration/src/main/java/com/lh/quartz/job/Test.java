@@ -20,4 +20,12 @@ public class Test {
         System.out.println("Test构造函数调用");
         System.out.println("this.testAttr:" + this.testAttr);
     }
+
+    public String getTestAttr() {
+        return testAttr;
+    }
+
+    public void setTestAttr(String testAttr) {
+        this.testAttr = testAttr;
+    }
 }
