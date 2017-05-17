@@ -77,9 +77,8 @@
         </dependency>
 
         <dependency>
-            <groupId>aspectj</groupId>
+            <groupId>org.aspectj</groupId>
             <artifactId>aspectjrt</artifactId>
-            <version>1.5.4</version>
         </dependency>
         <!--测试相关-->
         <dependency>
@@ -175,9 +174,9 @@
             </dependency>
 
             <dependency>
-                <groupId>aspectj</groupId>
+                <groupId>org.aspectj</groupId>
                 <artifactId>aspectjrt</artifactId>
-                <version>1.5.4</version>
+                <version>1.8.3</version>
             </dependency>
 
             <!--test-->

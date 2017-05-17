@@ -19,7 +19,7 @@ public class InterfaceDemoImpl implements InterfaceDemo {
 
 	@Override
 	public void testAnother() {
-		System.out.println("this 对象" + this);
+		System.out.println("this 对象" + this.getClass());
 		teString("hello 接口代理");
 	}
 

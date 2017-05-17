@@ -1,5 +1,7 @@
 package com.lh.aop.aspect.demo;
 
+import org.springframework.stereotype.Component;
+
 /**
  * @description 
  *
@@ -7,6 +9,7 @@ package com.lh.aop.aspect.demo;
  *
  * @date 2016年6月27日 下午1:51:14
  */
+@Component
 public aspect AspectAopDemo {
 pointcut demo() : execution(* com.doctor.aop.demo.Demo.* (..));
 
