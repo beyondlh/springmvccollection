@@ -8,7 +8,8 @@
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
 
-	<aop:aspectj-autoproxy proxy-target-class="false" />
+	<!--proxy-target-class属性值决定是基于接口的还是基于类的代理被创建。如果proxy-target-class 属性值被设置为true，那么基于类的代理将起作用（这时需要cglib库）。如果proxy-target-class属值被设置为false或者这个属性被省略，那么标准的JDK 基于接口的代理将起-->
+	<aop:aspectj-autoproxy proxy-target-class="true" />
 
 	<context:component-scan base-package="com.lh.aop.demo"/>
 </beans>

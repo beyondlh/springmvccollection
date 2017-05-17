@@ -24,13 +24,14 @@ public class MethodInvokeTimeAspect {
 		try {
 			proceed = point.proceed();
 			return proceed;
-
 		} finally {
-
 			long end = System.currentTimeMillis();
-
 			Object[] args = point.getArgs();
-			log.info("[{}],{},[{}], [{}] ", point, Arrays.toString(args), proceed, end - start);
+			String argsTemp =  Arrays.toString(args);
+			if(argsTemp=="[]"){
+				argsTemp = "[没有参数]";
+			}
+			log.info("[{}],{},[{}], [{}] ", point, argsTemp, proceed, end - start);
 		}
 
 	}

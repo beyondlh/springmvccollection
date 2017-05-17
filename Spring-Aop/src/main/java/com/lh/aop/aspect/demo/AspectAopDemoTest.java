@@ -1,8 +1,11 @@
 package com.lh.aop.aspect.demo;
 
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-
 import com.lh.aop.demo.Demo;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+import sizeof.agent.SizeOfAgent;
+
+import java.lang.management.ManagementFactory;
+import java.lang.management.RuntimeMXBean;
 
 /**
  * @author lh
@@ -16,15 +19,11 @@ import com.lh.aop.demo.Demo;
 class AspectAopDemoTest {
 
     public static void main(String[] args) {
-        ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext(
-                "classpath:/aopDemo1/spring-aop2.xml");
+        ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath:/aopDemo1/spring-aop.xml");
         Demo demo = applicationContext.getBean(Demo.class);
         demo.test01();
-        demo.test02("doctor who");
-        System.out.println("注入到spring容器的类实例是代理类" + demo.getClass());
-        // class com.doctor.aop.demo.Demo$$EnhancerBySpringCGLIB$$e9a9050a
+        System.out.println("注入到spring容器的类实例是代理类" + demo.toString());
         // 注入到spring容器的类实例是代理类
-
         applicationContext.close();
     }
 

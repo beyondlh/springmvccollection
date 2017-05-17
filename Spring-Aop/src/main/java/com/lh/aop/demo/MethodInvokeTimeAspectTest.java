@@ -41,11 +41,13 @@ public class MethodInvokeTimeAspectTest {
 				"classpath:/aopDemo1/spring-aop.xml");
 		Demo demo = applicationContext.getBean(Demo.class);
 		demo.test01();
-		demo.test02("doctor who");
+		demo.test02("main 中调用");
 		System.out.println("注入到spring容器的类实例是代理类" + demo.getClass());
 		// class com.doctor.aop.demo.Demo$$EnhancerBySpringCGLIB$$e9a9050a
 		// 注入到spring容器的类实例是代理类
-
+		System.out.println("/n");
+		System.out.println("/n");
+		System.out.println("/n");
 		InterfaceDemo interfaceDemo = applicationContext.getBean(InterfaceDemo.class);
 		System.out.println("注入到spring容器的类实例是代理类" + interfaceDemo.getClass());
 		interfaceDemo.testAnother();

@@ -25,6 +25,7 @@
         <spring.bom.version>4.2.3.RELEASE</spring.bom.version>
         <!--日志相关-->
         <slf4j.version>1.7.19</slf4j.version>
+        <logback.version>1.2.3</logback.version>
         <junit.version>4.12</junit.version>
         <spring.test>4.3.0.RELEASE</spring.test>
 
@@ -93,7 +94,24 @@
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+        </dependency>
+
+        <!--Logback是由log4j创始人设计的又一个开源日志组件。
+            logback当前分成三个模块：logback-core,logback- classic和logback-access。
+            logback-core是其它两个模块的基础模块。
+            logback-classic是log4j的一个 改良版本。此外logback-classic完整实现SLF4J API使你可以很方便地更换成其它日志系统如log4j或JDK14 Logging。
+            logback-access访问模块与Servlet容器集成提供通过Http来访问日志的功能。-->
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+        </dependency>
     </dependencies>
+
+
     <dependencyManagement>
         <dependencies>
             <!--Spring框架核心库 -->
@@ -141,6 +159,12 @@
                 <groupId>org.slf4j</groupId>
                 <artifactId>slf4j-api</artifactId>
                 <version>${slf4j.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-classic</artifactId>
+                <version>${logback.version}</version>
             </dependency>
 
             <!--json相关-->
