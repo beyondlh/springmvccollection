@@ -12,6 +12,7 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @RequestMapping
@@ -80,6 +81,35 @@ public class ProductController {
 			return "product/add";
 		}
 	}
+
+
+	@RequestMapping("/addSave2")
+	public String addSave2(Model model, Product product, BindingResult bindingResult) {
+		// 创建一个产品验证器
+		ProductValidator validator = new ProductValidator();
+		// 执行验证，将验证的结果给bindingResult，该类型继承Errors
+		validator.validate(product, bindingResult);
+
+		// 获得所有的字段错误信息，非必要
+		for (FieldError fielderror : bindingResult.getFieldErrors()) {
+			System.out.println(fielderror.getField() + "，" + fielderror.getCode() + "，" + fielderror.getDefaultMessage());
+		}
+
+		// 是否存在错误，如果没有，执行添加
+		if (!bindingResult.hasErrors()) {
+			// 根据类型的编号获得类型对象
+			product.setProductType(productTypeService.getProductTypeById(product.getProductType().getId()));
+			productService.addProduct(product);
+			return "redirect:/";
+		} else {
+			// 与form绑定的模型
+			model.addAttribute("product", product);
+			// 用于生成下拉列表
+			model.addAttribute("productTypes", productTypeService.getAllProductTypes());
+			return "product/add";
+		}
+	}
+
 
 	// 编辑，渲染出编辑界面，路径变量id是用户要编辑的产品编号
 	@RequestMapping("/edit/{id}")

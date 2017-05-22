@@ -22,6 +22,10 @@
 		class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping">
 		<property name="removeSemicolonContent" value="false" />
 	</bean>-->
+	<bean id="validater" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
+		<property name="providerClass" value="org.hibernate.validator.HibernateValidator"></property>
+		<!--<property name="validationMessageSource"></property>-->
+	</bean>
 
 
 	<!-- 内部视图解析器，JSP与JSTL模板 -->
