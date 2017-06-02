@@ -7,7 +7,8 @@ import java.io.Serializable;
  */
 public class User implements Serializable{
 
-    private static final long serialVersionUID = -929994095467892899L;
+    private static final long serialVersionUID = 2690992528875523345L;
+    //    private static final long serialVersionUID = -929994095467892899L;
     String name;
     //    性别
     String gender;
